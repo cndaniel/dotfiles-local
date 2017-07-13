@@ -1,2 +1,2 @@
 # use macvim 
-alias mvim -v mvi
+alias m='mvim -v'
