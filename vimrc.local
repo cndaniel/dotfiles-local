@@ -1,3 +1,15 @@
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+" vim-tmux script"
+nnoremap <leader>vo :VtrOpenRunner<cr>
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+
+" vim dispatch
+Plug 'tpope/vim-dispatch'
+
+nnoremap <leader>q :VtrSendCommandToRunner q<cr>
+
 "Mapping in Other Modes
 imap jk <esc>
 imap kj <esc>
@@ -33,3 +45,15 @@ nmap <leader>vr :sp $MYVIMRC<cr>
 
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+" Split edit your vimrc. Type space, v, r in sequence to trigger
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" " Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
