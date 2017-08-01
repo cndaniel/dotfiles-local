@@ -1,4 +1,3 @@
-bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 set-option -g status-keys "emacs"
 
 bind-key - split-window -v -c "#{pane_current_path}"
@@ -18,3 +17,19 @@ bind -n C-Down resize-pane -D 5
 bind -n C-Up resize-pane -U 5
 
 bind c new-window -c "#{pane_current_path}"
+
+
+bind-key b break-pane -d
+
+bind-key C-j choose-tree
+
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Setup 'v' to begin selection as in Vim
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
