@@ -1,5 +1,17 @@
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-syntastic/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+
 Plug 'christoomey/vim-tmux-runner'
+" New Colors
+Plug'nanotech/jellybeans.vim'
+" Elm
+Plug'ElmCast/elm-vim'
+
 " vim-tmux script"
 nnoremap <leader>vo :VtrOpenRunner<cr>
 nnoremap <leader>va :VtrAttachToPane<cr>
@@ -9,12 +21,25 @@ nnoremap <leader>fr :VtrFocusRunner<cr>
 Plug 'tpope/vim-dispatch'
 
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
-
+" Indent whole file
+map <Leader>i mmgg=G`m
+" Paste with proper indentation
+map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+" Rails.vim
+map <Leader>m :Rmodel
+map <Leader>sm :RSmodel
+map <Leader>sv :RSview
+map <Leader>vc :Vcontroller<cr>
+map <Leader>vm :Vmodel
+map <Leader>vv :Vview<cr>
 "Mapping in Other Modes
 imap jk <esc>
 imap kj <esc>
-" C-s to save
-imap <C-s> <esc>:w<cr>
+imap jj <esc>
+" C-w to save
+imap <C-w> <esc>:w<cr>
+" Quick PluginStall
+nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
 
 " Pre-populate a split command with the current directory
 nmap <leader>v :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
@@ -37,8 +62,6 @@ command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall
 command! E e
-
-
 
 " Split edit your vimrc. Type space, v, r in sequence to trigger
 nmap <leader>vr :sp $MYVIMRC<cr>
