@@ -1,3 +1,9 @@
+" Plug 'christoomey/vim-tmux-runner'
+nnoremap <leader>vo :VtrOpenRunner<cr>
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+
+nnoremap <leader>q :VtrSendCommandToRunner q<cr>
 set mouse=a
 set relativenumber
 let g:instant_markdown_slow = 1
