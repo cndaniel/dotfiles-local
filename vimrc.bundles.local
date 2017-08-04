@@ -1,0 +1,12 @@
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-syntastic/syntastic'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'suan/vim-instant-markdown'
+Plug 'christoomey/vim-tmux-runner'
+" New Colors
+Plug'nanotech/jellybeans.vim'
+" Elm
+Plug'ElmCast/elm-vim'
+" vim dispatch
+Plug 'tpope/vim-dispatch'
