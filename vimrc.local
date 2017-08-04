@@ -2,7 +2,7 @@
 nnoremap <leader>vo :VtrOpenRunner<cr>
 nnoremap <leader>va :VtrAttachToPane<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
-
+nnoremap <leader>sf :VtrSendFile<cr>
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
 set mouse=a
 set relativenumber
@@ -62,8 +62,6 @@ command! Qall qall
 command! QA qall
 command! E e
 
-" Split edit your vimrc. Type space, v, r in sequence to trigger
-nmap <leader>vr :sp $MYVIMRC<cr>
 
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
