@@ -1,9 +1,9 @@
 set mouse=a
+set relativenumber
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
-
 Plug 'suan/vim-instant-markdown'
 let g:instant_markdown_slow = 1
 
