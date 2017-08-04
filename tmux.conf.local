@@ -1,3 +1,11 @@
+#Highlight active window
+set-window-option -g window-status-current-bg white
+set-window-option -g window-status-current-fg red
+set -g status-interval 1
+set -g status-left-length 30
+set -g status-left '#[fg=white]#S #[default]'
+set -g status-right ''
+set -g status-right-length 40
 set-option -g status-keys "emacs"
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
