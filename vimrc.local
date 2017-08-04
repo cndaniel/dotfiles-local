@@ -1,3 +1,4 @@
+:set shell=zsh\ -l
 " Plug 'christoomey/vim-tmux-runner'
 nnoremap <leader>vo :VtrOpenRunner<cr>
 nnoremap <leader>va :VtrAttachToPane<cr>
@@ -6,7 +7,7 @@ nnoremap <leader>sf :VtrSendFile<cr>
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
 set mouse=a
 set relativenumber
-let g:instant_markdown_slow = 1
+" let g:instant_markdown_slow = 1
 
 " Search
 set hlsearch
@@ -32,12 +33,16 @@ map <Leader>sv :RSview
 map <Leader>vc :Vcontroller<cr>
 map <Leader>vm :Vmodel
 map <Leader>vv :Vview<cr>
+vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
 "Mapping in Other Modes
 imap jk <esc>
 imap kj <esc>
 imap jj <esc>
 " C-w to save
 imap <C-w> <esc>:w<cr>
+" C-q to save and quit
+imap <C-q> <esc>:wq<cr>
 " Quick PluginStall
 nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
 
