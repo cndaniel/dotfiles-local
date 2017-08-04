@@ -1,3 +1,4 @@
+set mouse=a
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
@@ -11,6 +12,11 @@ Plug 'christoomey/vim-tmux-runner'
 Plug'nanotech/jellybeans.vim'
 " Elm
 Plug'ElmCast/elm-vim'
+" Search
+set hlsearch
+set ignorecase
+set smartcase
+nmap <leader>h :nohlsearch<cr>
 
 " vim-tmux script"
 nnoremap <leader>vo :VtrOpenRunner<cr>
@@ -48,8 +54,7 @@ nmap <leader>v :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 nmap <leader>vi :tabedit ~/.vimrc<cr>
 
 " Copy the entire buffer into the system register
-nmap <leader>co ggVG*y
-
+map <Leader>co mmggVG"*y`m
 " Edit the db/schema.rb Rails file in a split
 nmap <leader>sc :split db/schema.rb<cr>
 
