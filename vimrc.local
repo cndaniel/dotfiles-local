@@ -1,11 +1,12 @@
-:set shell=zsh\ -l
+set shell=zsh\ -l
+set background=light
 " Plug 'christoomey/vim-tmux-runner'
 nnoremap <leader>vo :VtrOpenRunner<cr>
 nnoremap <leader>va :VtrAttachToPane<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
 nnoremap <leader>sf :VtrSendFile<cr>
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
-set mouse=a
+" set mouse=a
 set relativenumber
 " let g:instant_markdown_slow = 1
 
@@ -22,7 +23,7 @@ nnoremap <leader>fr :VtrFocusRunner<cr>
 
 
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
-" Indent whole file
+" Indenting whole file
 map <Leader>i mmgg=G`m
 " Paste with proper indentation
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
@@ -39,8 +40,9 @@ vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'
 imap jk <esc>
 imap kj <esc>
 imap jj <esc>
-" C-w to save
-imap <C-w> <esc>:w<cr>
+" C-z to save
+map <C-z> <esc>:w<cr>
+imap <C-z> <esc>:w<cr>
 " C-q to save and quit
 imap <C-q> <esc>:wq<cr>
 " Quick PluginStall

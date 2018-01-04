@@ -6,7 +6,9 @@ Plug 'suan/vim-instant-markdown'
 Plug 'christoomey/vim-tmux-runner'
 " New Colors
 Plug'nanotech/jellybeans.vim'
+Plug'petelewis/vim-evolution'
 " Elm
 Plug'ElmCast/elm-vim'
 " vim dispatch
 Plug 'tpope/vim-dispatch'
+Plug 'jlong/sass-convert'
