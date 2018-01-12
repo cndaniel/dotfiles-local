@@ -1,6 +1,6 @@
 # use macvim 
 #alias vim='mvim -v'
-#alias m='mvim -v'
+alias m='mvim -v'
 
 alias cp="cp -iv"
 alias rm="rm -iv"
