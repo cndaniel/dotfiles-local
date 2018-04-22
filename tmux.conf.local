@@ -1,3 +1,5 @@
+#Change prefix
+set -g prefix2 C-a
 #Highlight active window
 set-window-option -g window-status-current-bg white
 set-window-option -g window-status-current-fg red

@@ -1,3 +1,6 @@
+" Avoid lugin ale conflicts
+let g:ale_emit_conflict_warnings = 0
+
 set shell=zsh\ -l
 set background=light
 " Plug 'christoomey/vim-tmux-runner'
