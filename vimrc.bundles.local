@@ -11,4 +11,6 @@ Plug'petelewis/vim-evolution'
 Plug'ElmCast/elm-vim'
 " vim dispatch
 Plug 'tpope/vim-dispatch'
-Plug 'jlong/sass-convert'
+Plug 'jlong/sass-convert.vim'
+" NERDComment
+Plug 'scrooloose/nerdcommenter'
