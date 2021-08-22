@@ -1,8 +1,11 @@
 #Change prefix
 set -g prefix2 C-a
 #Highlight active window
-set-window-option -g window-status-current-bg white
-set-window-option -g window-status-current-fg red
+#set-window-option -g window-status-current-bg white
+#set-window-option -g window-status-current-fg red
+set-window-option -g window-status-current-style bg=white
+set-window-option -g window-status-current-style bg=white
+set -g status-interval 1
 set -g status-interval 1
 set -g status-left-length 30
 set -g status-left '#[fg=white]#S #[default]'
