@@ -100,3 +100,6 @@ tmux_init()
 if which tmux 2>&1 >/dev/null; then
   test -z "$TMUX" && (tmux attach || tmux_init)
 fi
+
+export PATH="$HOME/.bin:$PATH"
+source /usr/local/opt/asdf/asdf.sh
