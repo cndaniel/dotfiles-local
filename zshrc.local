@@ -102,4 +102,5 @@ if which tmux 2>&1 >/dev/null; then
 fi
 
 export PATH="$HOME/.bin:$PATH"
+export OPENAI_API_KEY=$(cat ~/Downloads/OPEN_AI_KEY)
 source /usr/local/opt/asdf/asdf.sh
