@@ -40,19 +40,21 @@ bind-key C-j choose-tree
 #bind C-j split-window -v "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
 
 # Use vim keybindings in copy mode
-set -g mode-keys vi
+setw -g  mode-keys vi
 set -g mouse on
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
 
 
 # Setup 'v' to begin selection as in Vim
-bind-key -T copy-mode-vi v send -X begin-selection
-bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
-
+ bind-key -T copy-mode-vi v send -X begin-selection
+ bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
+#bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "pbcopy"
+set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 # Update default binding of `Enter` to also use copy-pipe
 unbind -T copy-mode-vi Enter
-bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
-
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "pbcopy"
 
 
 
