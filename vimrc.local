@@ -1,4 +1,4 @@
-" Avoid lugin ale conflicts
+" Avoid plugin ale conflicts
 let g:ale_emit_conflict_warnings = 0
 
 set shell=zsh\ -l
@@ -19,13 +19,6 @@ set ignorecase
 set smartcase
 nmap <leader>h :nohlsearch<cr>
 
-" vim-tmux script"
-nnoremap <leader>vo :VtrOpenRunner<cr>
-nnoremap <leader>va :VtrAttachToPane<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr>
-
-
-nnoremap <leader>q :VtrSendCommandToRunner q<cr>
 " Indenting whole file
 map <Leader>i mmgg=G`m
 " Paste with proper indentation
@@ -48,7 +41,7 @@ map <C-z> <esc>:w<cr>
 imap <C-z> <esc>:w<cr>
 " C-q to save and quit
 imap <C-q> <esc>:wq<cr>
-" Quick PluginStall
+" Quick PlugInstall
 nmap <Leader>bi :source ~/.vimrc<cr>:PlugInstall<cr>
 
 " Pre-populate a split command with the current directory
@@ -80,9 +73,6 @@ nmap <leader>so :source $MYVIMRC<cr>
 autocmd VimResized * :wincmd =
 " Split edit your vimrc. Type space, v, r in sequence to trigger
 nmap <leader>vr :sp $MYVIMRC<cr>
-
-" " Source (reload) your vimrc. Type space, s, o in sequence to trigger
-nmap <leader>so :source $MYVIMRC<cr>
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>

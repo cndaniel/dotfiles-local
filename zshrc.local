@@ -55,14 +55,11 @@ ZSH_THEME="ys"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump rails ruby)
 
-source $ZSH/oh-my-zsh.sh
+[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  #if [[ -n $SSH_CONNECTION ]]; then
@@ -75,7 +72,7 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
- export SSH_KEY="~/.ssh/rsa_id"
+export SSH_KEY="$HOME/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -87,7 +84,9 @@ export LANG=en_US.UTF-8
  alias ohmyzsh="~/.oh-my-zsh"
 
 # AutoJump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if command -v brew >/dev/null; then
+  [[ -s "$(brew --prefix)/etc/profile.d/autojump.sh" ]] && . "$(brew --prefix)/etc/profile.d/autojump.sh"
+fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$HOME/go/bin
 
@@ -97,10 +96,28 @@ tmux_init()
   tmux -2 attach-session -d           # tmux -2强制启用256color，连接已开启的tmux
 }
 # 判断是否已有开启的tmux会话，没有则开启
-if which tmux 2>&1 >/dev/null; then
+if command -v tmux >/dev/null; then
   test -z "$TMUX" && (tmux attach || tmux_init)
 fi
 
-export PATH="$HOME/.bin:$PATH"
-source /usr/local/opt/asdf/asdf.sh
+if [ -s /usr/local/opt/asdf/asdf.sh ]; then
+  source /usr/local/opt/asdf/asdf.sh
+elif [ -s /opt/homebrew/opt/asdf/asdf.sh ]; then
+  source /opt/homebrew/opt/asdf/asdf.sh
+fi
 
+# Remove repo-relative PATH entry from shared dotfiles; re-add safely per repo.
+path=("${path[@]:#.git/safe/../../bin}")
+if command -v git >/dev/null; then
+  _safe_repo_bin() {
+    local root
+    root="$(git rev-parse --show-toplevel 2>/dev/null)" || return 0
+    path=("${path[@]:#${root}/bin}")
+    if [ -d "$root/.git/safe" ] && [ -d "$root/bin" ]; then
+      path=("$root/bin" "${path[@]}")
+    fi
+  }
+  autoload -U add-zsh-hook
+  add-zsh-hook chpwd _safe_repo_bin
+  _safe_repo_bin
+fi
