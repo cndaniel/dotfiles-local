@@ -1,5 +1,6 @@
-##### Terminal and colors
-set -g default-terminal "screen-256color"
+##### Terminal and colors (True Color support)
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
 
 ##### Key behavior
 setw -g mode-keys vi
@@ -27,8 +28,8 @@ set -g base-index 1
 setw -g pane-base-index 1
 set -g renumber-windows on
 
-##### Scrollback
-set -g history-limit 10000
+##### Scrollback (larger buffer for AI output)
+set -g history-limit 50000
 
 ##### Status bar
 set -g status-interval 1
@@ -113,3 +114,24 @@ bind-key T run-shell "command -v tat >/dev/null 2>&1 && tat || true"
 
 ##### Local config chaining (if you want to keep it)
 # if-shell "[ -f ~/.tmux.conf.local ]" "source ~/.tmux.conf.local"
+
+# ============================================
+# Plan 2: Tmux enhancements
+# ============================================
+
+##### TPM Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# tmux-resurrect configuration
+set -g @resurrect-capture-pane-contents 'on'
+set -g @resurrect-strategy-vim 'session'
+
+# tmux-continuum configuration
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '15'
+
+##### Initialize TPM (keep this at the bottom)
+run '~/.tmux/plugins/tpm/tpm'

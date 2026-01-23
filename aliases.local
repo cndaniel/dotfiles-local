@@ -13,3 +13,39 @@ alias sed="sed -E"
 # Copy-pasting '$ python something.py' works
 alias \$=''
 
+# ============================================
+# AI Coding Tools Aliases
+# ============================================
+
+# OpenCode
+alias oc="opencode"
+alias ocn="opencode --new"
+
+# Claude Code
+alias cc="claude"
+
+# Codex
+alias cx="codex"
+
+# Cursor
+alias cursor="open -a 'Cursor'"
+alias c.="cursor ."
+
+# ============================================
+# AI Tool Helpers
+# ============================================
+
+cpc() {
+  if [[ -f "$1" ]]; then
+    cat "$1" | pbcopy
+    echo "已复制 $1 到剪贴板"
+  else
+    echo "文件不存在: $1"
+  fi
+}
+
+alias lastcmd="fc -ln -1 | pbcopy && echo '已复制上一条命令'"
+alias tree-copy="tree -L 3 -I 'node_modules|.git|__pycache__|.venv' | pbcopy && echo '已复制目录结构'"
+alias diff-copy="git diff | pbcopy && echo '已复制 git diff'"
+alias agents="cat AGENTS.md 2>/dev/null || echo '当前目录没有 AGENTS.md'"
+alias eagents="$EDITOR AGENTS.md"
