@@ -69,6 +69,12 @@ bind -n C-Up    resize-pane -U 5
 ##### Pane management
 bind-key b break-pane -d
 
+##### Layout presets (one key)
+# Three (or more) panes as columns (left-to-right)
+bind-key V select-layout even-vertical
+# Three (or more) panes as rows (top-to-bottom)
+bind-key H select-layout even-horizontal
+
 # Swap current pane with a target pane number
 bind-key s display-panes \; command-prompt -p "pane #: " "swap-pane -t '%%'"
 

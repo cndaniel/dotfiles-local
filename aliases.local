@@ -3,7 +3,7 @@
 alias m='mvim -v'
 
 alias cp="cp -iv"
-alias rm="rm -iv"
+alias rm="rm -Iv"
 alias mv="mv -iv"
 alias ls="ls -FGh"
 alias cl="clear"
@@ -35,6 +35,45 @@ alias c.="cursor ."
 # AI Tool Helpers
 # ============================================
 
+# rm bypass (for scripts/AI, avoids interactive prompts)
+alias rmf="command rm -f"
+alias rrf="command rm -rf"
+
+ai-snap() {
+  {
+    echo "PWD: $PWD"
+    echo
+
+    if command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      echo "== git status -sb =="
+      git status -sb
+      echo
+
+      echo "== git diff --stat =="
+      git -c color.ui=false diff --stat
+      echo
+
+      echo "== git diff =="
+      git -c color.ui=false diff
+      echo
+
+      echo "== git diff --cached =="
+      git -c color.ui=false diff --cached
+      echo
+    fi
+
+    if command -v tree >/dev/null 2>&1; then
+      echo "== tree -L 3 =="
+      tree -L 3 -I 'node_modules|.git|__pycache__|.venv|dist|build'
+    else
+      echo "== ls -la =="
+      ls -la
+    fi
+  } | pbcopy
+
+  echo "Copied context to clipboard (ai-snap)"
+}
+
 cpc() {
   if [[ -f "$1" ]]; then
     cat "$1" | pbcopy
@@ -46,6 +85,6 @@ cpc() {
 
 alias lastcmd="fc -ln -1 | pbcopy && echo '已复制上一条命令'"
 alias tree-copy="tree -L 3 -I 'node_modules|.git|__pycache__|.venv' | pbcopy && echo '已复制目录结构'"
-alias diff-copy="git diff | pbcopy && echo '已复制 git diff'"
+alias diff-copy="git -c color.ui=false diff | pbcopy && echo '已复制 git diff'"
 alias agents="cat AGENTS.md 2>/dev/null || echo '当前目录没有 AGENTS.md'"
 alias eagents="$EDITOR AGENTS.md"
