@@ -34,10 +34,10 @@ set -g history-limit 50000
 ##### Status bar
 set -g status-interval 1
 set -g status-style bg="#666666",fg="#aaaaaa"
-set -g status-left-length 30
+set -g status-left-length 50
 set -g status-right-length 40
-set -g status-left "#[fg=white]#S #[default]"
-set -g status-right ""
+set -g status-left "#[fg=yellow]#{?client_prefix,PFX ,}#[fg=white,bold]#S #[fg=#aaaaaa]| #[fg=#ffffff]#W#[default]"
+set -g status-right "#[fg=#cccccc]%Y-%m-%d %H:%M #[default]"
 
 # Highlight active window
 setw -g window-status-current-style bg=white,fg=black
@@ -140,4 +140,4 @@ set -g @continuum-restore 'on'
 set -g @continuum-save-interval '15'
 
 ##### Initialize TPM (keep this at the bottom)
-run '~/.tmux/plugins/tpm/tpm'
+if-shell "[ -f ~/.tmux/plugins/tpm/tpm ]" "run '~/.tmux/plugins/tpm/tpm'"
